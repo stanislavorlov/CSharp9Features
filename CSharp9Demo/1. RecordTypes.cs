@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSharp9Demo
 {
@@ -28,6 +24,18 @@ namespace CSharp9Demo
                 : base(firstName, lastName) => Subject = subject;
         }
 
+        public record Pet(string Name)
+        {
+            public void ShredTheFurniture() =>
+                Console.WriteLine($"{nameof(ShredTheFurniture)} got called");
+        }
+
+        public record Dog(string Name) : Pet(Name)
+        {
+            public void WagTail() =>
+                Console.WriteLine($"{nameof(WagTail)} got called");
+        }
+
         public static void Run()
         {
             Person person1 = new Person("Stanislav", "Orlov");
@@ -35,7 +43,9 @@ namespace CSharp9Demo
 
             Console.WriteLine(person1 == person2);      //false
 
-            person1.FirstName = "Vladyslav";
+            Person brother = person1 with { FirstName = "Vladyslav" };
+
+            Console.WriteLine(person1 == brother);
         }
     }
 }

@@ -1,12 +1,9 @@
-﻿using System;
+﻿//3. Top-level statements
 
-namespace CSharp9Demo
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            RecordTypes.Run();
-        }
-    }
-}
+//Only one file may use top-level statements
+
+using CSharp9Demo;
+
+RecordTypes.Run();
+InitSetters.Run();
+PatternMatching.Run();
